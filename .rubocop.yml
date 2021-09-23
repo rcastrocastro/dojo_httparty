@@ -1,0 +1,17 @@
+AllCops:
+  NewCops: disable
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Naming/AsciiIdentifiers:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 50
+
+Style/RedundantRegexpEscape:
+  Enabled: false

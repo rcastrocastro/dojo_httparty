@@ -1,0 +1,6 @@
+---
+URI_VIA_CEP: 'http://viacep.com.br'
+HEADER_VIA_CEP: { 'Content-Type': 'application/json' }
+
+URI_BOOKING: 'http://restful-booker.herokuapp.com'
+HEADER_BOOKING: { 'Content-Type': 'application/json' }

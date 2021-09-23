@@ -1,0 +1,21 @@
+---
+default: -p dev -p env_dev -p html -p json -p bdd --publish-quiet
+ambiente_qa: -p qa -p env_qa -p html -p json -p dot --publish-quiet
+ambiente_hml: -p hml -p env_hml -p html -p json -p bdd --publish-quiet
+ci: -p dev -p env_dev -p html -p json -p bdd --publish-quiet
+
+# Ambientes
+dev: ENV_TYPE=dev
+env_dev: ENV_PREFIX=dev
+qa: ENV_TYPE=qa
+env_qa: ENV_PREFIX=qa
+hml: ENV_TYPE=hml
+env_hml: ENV_PREFIX=hml
+
+# Report
+html: --format html --out=report/report.html
+json: --format json --out=report/report.json
+
+# Documentação Terminal
+bdd: --format pretty
+dot: --format progress
