@@ -3,15 +3,15 @@ name: CI
 on:
   push:
     branches: 
-      - main
+      - master
       - develop
       - feature/**
   pull_request:
     branches:
-      - main
+      - master
       - develop
       - feature/**
-
+      
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -21,9 +21,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: bundle install --retry=3 --jobs=4
+      run: bundle install --retry=3 --jobs=4 && env
     - name: Run tests
       run: bundle exec cucumber -p ci --retry 2
+      env:
+        USERNAME_TOKEN: ${{ secrets.USERNAME_TOKEN }}
+        PASSWORD_TOKEN: ${{ secrets.PASSWORD_TOKEN }}
     - name: Report
       uses: actions/upload-artifact@v2
       with:
