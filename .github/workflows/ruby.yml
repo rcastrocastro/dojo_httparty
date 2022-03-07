@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: 
+      - main
+      - develop
+      - feature/**
+  pull_request:
+    branches:
+      - main
+      - develop
+      - feature/**
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: docker://raphaelcastro35/teste_will:v.1
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: bundle install --retry=3 --jobs=4
+    - name: Run tests
+      run: bundle exec cucumber -p ci --retry 2
+    - name: Report
+      uses: actions/upload-artifact@v2
+      with:
+          name: report
+          path: report/report.html
